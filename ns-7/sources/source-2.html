@@ -1,0 +1,167 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > UserDetailsServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.delta.document.service</a>
+</div>
+
+<h1>Coverage Summary for Class: UserDetailsServiceImpl (com.delta.document.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserDetailsServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (1/5)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">UserDetailsServiceImpl$$EnhancerBySpringCGLIB$$6e0a3699</td>
+  </tr>
+  <tr>
+    <td class="name">UserDetailsServiceImpl$$EnhancerBySpringCGLIB$$d56134f7</td>
+  </tr>
+  <tr>
+    <td class="name">UserDetailsServiceImpl$$EnhancerBySpringCGLIB$$dd1b1618</td>
+  </tr>
+  <tr>
+    <td class="name">UserDetailsServiceImpl$loadUserByUsername$user$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.delta.document.service
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;
+<i class="no-highlight">4</i>&nbsp;import com.delta.document.model.User
+<i class="no-highlight">5</i>&nbsp;import com.delta.document.repository.UserRepository
+<i class="no-highlight">6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired
+<i class="no-highlight">7</i>&nbsp;import org.springframework.security.core.userdetails.UserDetails
+<i class="no-highlight">8</i>&nbsp;import org.springframework.security.core.userdetails.UserDetailsService
+<i class="no-highlight">9</i>&nbsp;import org.springframework.security.core.userdetails.UsernameNotFoundException
+<i class="no-highlight">10</i>&nbsp;import org.springframework.stereotype.Service
+<i class="no-highlight">11</i>&nbsp;import javax.transaction.Transactional
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;@Service
+<b class="fc"><i class="no-highlight">15</i>&nbsp;class UserDetailsServiceImpl : UserDetailsService {</b>
+<i class="no-highlight">16</i>&nbsp;    @Autowired
+<b class="nc"><i class="no-highlight">17</i>&nbsp;    var userRepository: UserRepository? = null</b>
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;    @Transactional
+<i class="no-highlight">20</i>&nbsp;    @Throws(UsernameNotFoundException::class)
+<i class="no-highlight">21</i>&nbsp;    override fun loadUserByUsername(username: String): UserDetails {
+<b class="nc"><i class="no-highlight">22</i>&nbsp;        val user: User? = userRepository!!.findByUsername(username)</b>
+<b class="nc"><i class="no-highlight">23</i>&nbsp;            ?.orElseThrow { UsernameNotFoundException(&quot;User Not Found with -&gt; username or email : $username&quot;) }</b>
+<i class="no-highlight">24</i>&nbsp;
+<b class="nc"><i class="no-highlight">25</i>&nbsp;        return UserPrinciple.build(user)</b>
+<i class="no-highlight">26</i>&nbsp;    }
+<i class="no-highlight">27</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-10-04 23:08</div>
+</div>
+</body>
+</html>
